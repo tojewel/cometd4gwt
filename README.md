@@ -11,6 +11,7 @@ final CometDClient client = new AutoReSubscribableClient(new CometdClientImpl(ne
 
 client.addConnectionListener(new CometConnectionListener() {
 
+```java
 @Override
 public void onConnected() {
 
@@ -30,3 +31,4 @@ public void onDisconnected() {
 
 String url = "http://" + Window.Location.getHost() + "/cometd";
 client.connect(new ConnectionConfig(url));
+```
