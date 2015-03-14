@@ -8,25 +8,28 @@ Source code includes a sample project along with eclipse project file for Google
 Here's how the client code looks like,
 
 ```java
-final CometDClient client = new AutoReSubscribableClient(new CometdClientImpl(new CometdDojo()));
+final CometDClient client = 
+      new AutoReSubscribableClient(new CometdClientImpl(new CometdDojo()));
 
 client.addConnectionListener(new CometConnectionListener() {
 
   @Override
   public void onConnected() {
 
-  // Register to receive object message
-  client.addSubscriber("/twitter", new CometMessageConsumer() {
-    @Override
-    public void onMessageReceived(IsSerializable message) {
-    // Process object received from the server
-  }
-  });
+      // Register to receive object message
+      client.addSubscriber("/twitter", new CometMessageConsumer() {
+    
+          @Override
+          public void onMessageReceived(IsSerializable message) {
+          // Process object received from the server
+          }
+      });
   }
 
   @Override
   public void onDisconnected() {
   }
+  
 });
 
 String url = "http://" + Window.Location.getHost() + "/cometd";
